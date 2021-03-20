@@ -13,22 +13,19 @@ interface Task {
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
-  
-  const [idTask, setIdTask] = useState(1)
 
   function handleCreateNewTask() {
     if(newTaskTitle.trim()=="")
       return
- 
+
     tasks.push({
-      id: idTask,
+      id: Math.floor(Math.random() * 9999) + 1,
       title: newTaskTitle,
       isComplete: false
     })
 
-    setIdTask(idTask+1) // Increment no id
-
     setNewTaskTitle('')
+    
     setTasks(tasks)  
   }
 
